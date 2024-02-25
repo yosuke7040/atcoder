@@ -20,7 +20,27 @@ python でインクリメント使えないじゃん
 - 和の公式
   1/2 * n * (n+1)
 
-### ABC180 C
+### ✅167 C
+
+- bit全探索
+  N=22がギリギリ限界
+
+以下は一緒な考え方になる
+```python
+for i in range(2**N):
+
+for i in range(1<<N):
+```
+
+だいたいこんな感じの実装になるはず
+```python
+for bit in range(1 << N):
+    for i in range(N):
+        if bit & (1 << i):
+            cost += C[i]
+```
+
+### 180 C
 
 - 約数列挙
 
