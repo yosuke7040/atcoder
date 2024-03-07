@@ -33,14 +33,31 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-N = int(input())
-a = list(map(int, input().split()))
+S = input()
 
-seito = dict()
-for i in range(N):
-    seito[i + 1] = a[i]
+if S[0] != "A":
+    print("WA")
+    exit()
 
-seito2 = sorted(seito.items(), key=lambda x: x[1], reverse=True)
+if not S[1].islower():
+    print("WA")
+    exit()
 
-for i in range(N):
-    print(seito2[i][0])
+if S[2:-1].count("C") != 1:
+    print("WA")
+    exit()
+
+if not S[-1].islower():
+    print("WA")
+    exit()
+
+if not S.replace("C", "").replace("A", "").islower():
+    # NOTE：これは4文字の時、空の文字列を返している
+    # print(S[2:-1].replace("C", "").islower())
+    # 小文字が含まれていないから、そもそもislower()でFalseになる
+    # if not S[2:-1].replace("C", "").islower():
+    print("WA")
+    exit()
+
+
+print("AC")

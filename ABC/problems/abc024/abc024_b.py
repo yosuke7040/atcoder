@@ -33,14 +33,21 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-N = int(input())
-a = list(map(int, input().split()))
-
-seito = dict()
+N, T = map(int, input().split())
+A = list()
 for i in range(N):
-    seito[i + 1] = a[i]
+    A.append(int(input()))
 
-seito2 = sorted(seito.items(), key=lambda x: x[1], reverse=True)
+ans = 0
+before_A = A[0]
 
-for i in range(N):
-    print(seito2[i][0])
+for i in range(1, N):
+    if before_A + T < A[i]:
+        ans += T
+        # before_A = A[i]
+    else:
+        ans += A[i] - before_A
+
+    before_A = A[i]
+
+print(ans + T)

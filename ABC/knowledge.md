@@ -15,6 +15,10 @@ sys.setrecursionlimit(10\*\*6)
 
 python でインクリメント使えないじゃん
 
+### 029 C
+
+- 順列・組み合わせ(<https://cocoinit23.com/python-itertools/>)
+
 ### 154 D
 
 - 和の公式

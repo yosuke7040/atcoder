@@ -1,3 +1,4 @@
+import itertools
 import sys
 
 sys.setrecursionlimit(10**6)
@@ -33,14 +34,10 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
+pw = "abc"
+# pw = ["a", "b", "c"]
 N = int(input())
-a = list(map(int, input().split()))
 
-seito = dict()
-for i in range(N):
-    seito[i + 1] = a[i]
-
-seito2 = sorted(seito.items(), key=lambda x: x[1], reverse=True)
-
-for i in range(N):
-    print(seito2[i][0])
+for p in itertools.product(pw, repeat=N):
+    # for p in itertools.permutations(pw, N):
+    print("".join(p))
