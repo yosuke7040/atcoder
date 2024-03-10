@@ -53,11 +53,7 @@ for i in range(1, len(A) + 1):
         dp[i][j] = min(dp[i][j], dp[i - 1][j])
         for s in A[i - 1]:
             k = len(s)
-<<<<<<< HEAD
             # s がTの一部と一致し、文字を追加する場合
-=======
-            # s がTの一部と一致し、文字を追加すする場合
->>>>>>> b26199d36d660b206f261ee2070241d0deb1d502
             if j + k <= len(T) and T[j : j + k] == s:
                 dp[i][j + k] = min(dp[i][j + k], dp[i - 1][j] + 1)
 
