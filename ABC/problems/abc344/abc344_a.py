@@ -31,3 +31,12 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     slope2 = (y3 - y1) * (x2 - x1)
 
     return slope1 == slope2
+
+
+S = input()
+
+A, B, C = S.split("|")
+# print(A)
+# print(B)
+# print(C)
+print(A + C)

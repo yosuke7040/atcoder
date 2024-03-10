@@ -31,3 +31,15 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     slope2 = (y3 - y1) * (x2 - x1)
 
     return slope1 == slope2
+
+
+ans = []
+while True:
+    A = int(input())
+    ans.append(A)
+
+    if A == 0:
+        break
+
+for i in range(1, len(ans) + 1):
+    print(ans[-i])
