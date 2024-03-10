@@ -1,6 +1,7 @@
 import sys
 
 sys.setrecursionlimit(10**6)
+INF = 1 << 60
 
 
 # 最大公約数
