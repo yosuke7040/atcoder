@@ -103,3 +103,23 @@ tmp_ans = list(ans)
 tmp_ans.sort()
 for i in range(len(tmp_ans)):
     print(tmp_ans[i])
+
+# print("!!!!!!!!!!!!!!!!!!")
+# import random
+
+# hoge = set()
+# for i in range(10):
+#     hoge.add(random.randint(1, 100))
+
+# print(hoge)
+
+# for i in range(20):
+#     hoge.add(random.randint(1, 100))
+
+# print(hoge)
+
+# fuga = set()
+# fuga.add(1)
+# fuga.add(3)
+# fuga.add(2)
+# print(fuga)

@@ -34,5 +34,17 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-# from collections import defaultdict,Counter
-# tmp = defaultdict(int)
+S = input()
+
+if S[0] != "<":
+    print("No")
+    sys.exit()
+
+if S[-1] != ">":
+    print("No")
+    sys.exit()
+
+if len(S) - 2 == S.count("="):
+    print("Yes")
+else:
+    print("No")

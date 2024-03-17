@@ -34,5 +34,20 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-# from collections import defaultdict,Counter
-# tmp = defaultdict(int)
+from collections import defaultdict
+
+S = input()
+N = len(S)
+ans = 0
+count = defaultdict(int)
+
+for j in range(N):
+    ans += j - count[S[j]]
+    # print("--------")
+    # print(f"j: {j}, count[S[j]]: {count[S[j]]}, S[j]: {S[j]}, ans: {ans}")
+    count[S[j]] += 1
+
+if max(count.values()) > 1:
+    ans += 1
+
+print(ans)

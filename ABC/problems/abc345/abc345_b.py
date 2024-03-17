@@ -34,5 +34,8 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-# from collections import defaultdict,Counter
-# tmp = defaultdict(int)
+X = int(input())
+
+# print(math.ceil(X + 10 / 10))
+print((X + 10 - 1) // 10)
+# print(X / 10)
