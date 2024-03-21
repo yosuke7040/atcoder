@@ -19,6 +19,11 @@ if [ ! -d "$src_dir" ]; then
     exit 1
 fi
 
+# 新規ディレクトリの存在確認
+if [ -d "$dest_dir" ]; then
+    echo "Directory $dest_dir already exists."
+    exit 1
+fi
 # 新規ディレクトリの作成
 mkdir -p "$dest_dir"
 
