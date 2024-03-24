@@ -166,7 +166,14 @@ math.ceil(N)
     return 0 if N == 1 else f(N // 2) + f((N + 1) // 2) + N
   ```
 
-### 文字扱い
+### 346 C
+
+- sortはHackされるとO(N)になる
+  - <https://atcoder.jp/contests/abc346/editorial/9635>
+- Hackを防ぐために乱数を使うか、赤黒木で実装されたSortedSetを使うか
+  - <https://www.youtube.com/watch?v=NireH9qqt3Y>
+
+## 文字扱い
 
 - 数値を2進数、8進数、16進数表記の文字列に変換
   - bin(x)
