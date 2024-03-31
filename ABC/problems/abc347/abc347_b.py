@@ -53,3 +53,16 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
+
+S = input()
+
+ans = set()
+
+# 何文字の部分文字列にするか
+for i in range(1, len(S) + 1):
+    # 開始位置
+    for j in range(len(S)):
+        if j + i <= len(S):
+            ans.add(S[j : j + i])
+
+print(len(ans))

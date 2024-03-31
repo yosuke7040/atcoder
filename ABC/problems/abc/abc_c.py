@@ -4,6 +4,24 @@ sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
 
+# # 連結リストの各ノード
+# class Node:
+#     def __init__(self, value=""):
+#         self.nex = None  # 次がどのノードを指すか
+#         self.value = value  # ノードに付随している値
+
+
+# # 連結リストの初期化
+# nil = Node()
+# nil.nex = nil
+
+
+# # 連結リストへ先頭への要素の挿入
+# def insert(v):
+#     v.nex = nil.nex  # v の次を、現在の先頭に
+#     nil.nex = v  # 先頭を v に書き換える
+
+
 # 最大公約数
 def gcd_e(a, b):
     while b:
