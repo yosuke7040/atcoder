@@ -3,23 +3,28 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
 #         self.nex = None  # 次がどのノードを指すか
 #         self.value = value  # ノードに付随している値
 
-
 # # 連結リストの初期化
 # nil = Node()
 # nil.nex = nil
-
 
 # # 連結リストへ先頭への要素の挿入
 # def insert(v):
 #     v.nex = nil.nex  # v の次を、現在の先頭に
 #     nil.nex = v  # 先頭を v に書き換える
+
+# # 先頭の要素を削除
+# def erase():
+#     if nil.nex == nil:
+#         print("Error")
+#     else:
+#         nil.nex = nil.nex.nex
+#         pass
 
 
 # 最大公約数
@@ -52,40 +57,22 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-# 連結リストの各ノード
-class Node:
-    def __init__(self, value=""):
-        self.nex = None  # 次がどのノードを指すか
-        self.value = value  # ノードに付随している値
+# from collections import defaultdict,Counter
+# tmp = defaultdict(int)
 
+S = input()
 
-# 連結リストの初期化
-nil = Node()
-nil.nex = nil
+stack = []
 
+for i in range(len(S)):
+    stack.append(S[i])
 
-# 連結リストへ先頭への要素の挿入
-def insert(v):
-    v.nex = nil.nex  # v の次を、現在の先頭に
-    nil.nex = v  # 先頭を v に書き換える
+    if len(stack) < 3:
+        continue
 
+    if stack[-3:] == ["A", "B", "C"]:
+        stack.pop()
+        stack.pop()
+        stack.pop()
 
-def erase():
-    if nil.nex == nil:
-        print("Error")
-    else:
-        print(nil.nex.value)
-        nil.nex = nil.nex.nex
-        pass
-
-
-Q = int(input())
-for i in range(Q):
-    tmp = input()
-    print(tmp)
-    if tmp[0] == "0":
-        q1, q2 = tmp.split(" ")
-        n = Node(q2)
-        insert(n)
-    else:
-        erase()
+print("".join(stack))
