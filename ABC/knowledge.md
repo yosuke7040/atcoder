@@ -19,6 +19,11 @@ python でインクリメント使えないじゃん
 
 - 順列・組み合わせ(<https://cocoinit23.com/python-itertools/>)
 
+### 149 C
+
+- 素数の計算
+  Nの
+
 ### 154 D
 
 - 和の公式

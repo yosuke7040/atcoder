@@ -15,17 +15,32 @@ def lcm_e(a, b):
     return a * b / gcd_e(a, b)
 
 
-N, X = map(int, input().split())
+# N, X = map(int, input().split())
 
-drunk = 0
+# drunk = 0
+# X = X * 100
+# for i in range(N):
+#     V, P = map(int, input().split())
+
+#     alcohol = V * P
+#     drunk += alcohol
+
+#     if drunk > X:
+#         print(i + 1)
+#         exit()
+
+# print(-1)
+
+N, X = map(int, input().split())
 X = X * 100
+total = 0
 for i in range(N):
     V, P = map(int, input().split())
+    total += V * P
 
-    alcohol = V * P
-    drunk += alcohol
-
-    if drunk > X:
+    # print(total)
+    # print(X)
+    if total > X:
         print(i + 1)
         exit()
 

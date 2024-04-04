@@ -3,6 +3,7 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
+
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -59,5 +60,3 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-# 両端キュー
-# from collections import deque

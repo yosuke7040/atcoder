@@ -59,5 +59,20 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-# 両端キュー
-# from collections import deque
+from collections import deque
+
+n = int(input())
+a = list(map(int, input().split()))
+
+ans = deque()
+for i in range(n):
+    if i % 2 == 0:
+        ans.append(a[i])
+    else:
+        ans.appendleft(a[i])
+
+list_ans = list(ans)
+if n % 2 == 0:
+    print(*list_ans)
+else:
+    print(*list_ans[::-1])

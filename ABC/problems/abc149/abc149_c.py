@@ -59,5 +59,13 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-# 両端キュー
-# from collections import deque
+
+
+X = int(input())
+for i in range(X, 10**6):
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            break
+    else:
+        print(i)
+        exit(0)

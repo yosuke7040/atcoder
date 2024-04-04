@@ -1,3 +1,4 @@
+import math
 import sys
 
 sys.setrecursionlimit(10**6)
@@ -59,5 +60,28 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-# 両端キュー
-# from collections import deque
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+XY = [[0, 0] for _ in range(N)]
+for i in range(N):
+    XY[i][0], XY[i][1] = map(int, input().split())
+
+ans = 10**10
+for i in range(K):
+    tmp_ans = []
+    for j in range(N):
+        if j == A[i] - 1:
+            continue
+        tmp_ans.append(
+            math.sqrt(
+                abs((XY[A[i] - 1][0] - XY[j][0])) ** 2
+                + abs((XY[A[i] - 1][1] - XY[j][1])) ** 2
+            )
+        )
+    print(tmp_ans)
+    ans = min(ans, max(tmp_ans))
+
+print(ans)
+# print(math.sqrt(ans))
