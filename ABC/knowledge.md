@@ -22,7 +22,8 @@ python でインクリメント使えないじゃん
 ### 149 C
 
 - 素数の計算
-  Nの
+  素数判定のアルゴリズム（<https://algo-method.com/descriptions/93>）
+  Nの平方根までの計算で良い
 
 ### 154 D
 
