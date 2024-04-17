@@ -34,34 +34,34 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 
 N = int(input())
-S = input()
-S_array = list(S)
+S = list(input())
 Q = int(input())
-TAB = [list(map(int, input().split())) for _ in range(Q)]
-irekae = False
 
+
+hanten = False
 for i in range(Q):
-    if TAB[i][0] == 1:
-        if irekae:
-            tmp_a = (TAB[i][1] + N) % (2 * N)
-            tmp_b = (TAB[i][2] + N) % (2 * N)
-            S_array[tmp_a - 1], S_array[tmp_b - 1] = (
-                S_array[tmp_b - 1],
-                S_array[tmp_a - 1],
-            )
-        else:
-            S_array[TAB[i][1] - 1], S_array[TAB[i][2] - 1] = (
-                S_array[TAB[i][2] - 1],
-                S_array[TAB[i][1] - 1],
-            )
-    else:
-        # ↓N回の処理が走る
-        # S_array = S_array[N:] + S_array[:N]
-        # 実際には入れ替えない
-        irekae = not irekae
+    t, a, b = map(int, input().split())
 
-if irekae:
-    S_array = S_array[N:] + S_array[:N]
-    print("".join(map(str, S_array)))
-else:
-    print("".join(map(str, S_array)))
+    if t == 1:
+        if hanten:
+            # 半分より前だけで入れ替え
+            if b <= N:
+                a += N
+                b += N
+            # 半分より後半だけで入れ替え
+            elif a > N:
+                a -= N
+                b -= N
+            # aは前半、bは後半で入れ替え
+            else:
+                a += N
+                b -= N
+
+        S[a - 1], S[b - 1] = S[b - 1], S[a - 1]
+    else:
+        hanten = not hanten
+
+if hanten:
+    S = S[N:] + S[:N]
+
+print("".join(S))

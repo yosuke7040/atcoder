@@ -3,6 +3,7 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
+
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -59,29 +60,12 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
+# 両端キュー
+# from collections import deque
 
-N, K = map(int, input().split())
-R, S, P = map(int, input().split())
-T = input()
+n, x = map(int, input().split())
 
-
-def score(i):
-    if T[i] == "r":
-        return P
-    if T[i] == "s":
-        return R
-    if T[i] == "p":
-        return S
-
-
-ans = 0
-for k in range(K):
-    last = False
-    for i in range(k, N, K):
-        if i >= K and T[i - K] == T[i] and last:
-            last = False
-        else:
-            ans += score(i)
-            last = True
-
-print(ans)
+if n // 2 >= x:
+    print(x - 1)
+else:
+    print(n - x)

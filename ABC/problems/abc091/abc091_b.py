@@ -57,31 +57,30 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
-# from collections import defaultdict,Counter
+from collections import defaultdict
+
 # tmp = defaultdict(int)
+# 両端キュー
+# from collections import deque
 
-N, K = map(int, input().split())
-R, S, P = map(int, input().split())
-T = input()
+N = int(input())
+S = [input() for _ in range(N)]
+M = int(input())
+T = [input() for _ in range(M)]
 
-
-def score(i):
-    if T[i] == "r":
-        return P
-    if T[i] == "s":
-        return R
-    if T[i] == "p":
-        return S
-
+ao = defaultdict(int)
+for s in S:
+    ao[s] += 1
+aka = defaultdict(int)
+for t in T:
+    aka[t] += 1
 
 ans = 0
-for k in range(K):
-    last = False
-    for i in range(k, N, K):
-        if i >= K and T[i - K] == T[i] and last:
-            last = False
-        else:
-            ans += score(i)
-            last = True
+for k in ao.keys():
+    if k in aka:
+        ans = max(ans, ao[k] - aka[k])
+    else:
+        ans = max(ans, ao[k])
+    # print(ao[k], k)
 
 print(ans)
