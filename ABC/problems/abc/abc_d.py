@@ -61,3 +61,5 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 # tmp = defaultdict(int)
 # 両端キュー
 # from collections import deque
+# 優先度付きキュー
+# from heapq import heapify, heappush, heappop

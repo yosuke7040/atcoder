@@ -1,9 +1,9 @@
 import sys
+
 sys.setrecursionlimit(10**6)
-from itertools import product
 
 
-from heapq import heapify, heappush, heappop
+from heapq import heapify, heappop, heappush
 
 N, K = map(int, input().split())
 P = list(map(int, input().split()))
@@ -12,11 +12,10 @@ pq = P[:K]
 heapify(pq)
 print(pq[0])
 
-for i in range(N-K):
-    heappush(pq, P[K+i])
+for i in range(N - K):
+    heappush(pq, P[K + i])
     heappop(pq)
     print(pq[0])
-
 
 
 # ans = [False] * (N+1)
@@ -39,9 +38,6 @@ for i in range(N-K):
 #         print(min)
 
 
-
-
-
 # def val_insert(ans, x):
 #     l = 0
 #     r = len(ans)
@@ -56,7 +52,6 @@ for i in range(N-K):
 # for i in range(N - K + 1):
 #     ans = sorted(P[:K+i], reverse=True)
 #     print(ans[K-1])
-
 
 
 # ans = sorted(P[:K], reverse=True)

@@ -1,8 +1,30 @@
-import itertools
-import math
 import sys
 
 sys.setrecursionlimit(10**6)
+INF = 1 << 60
+
+# # 連結リストの各ノード
+# class Node:
+#     def __init__(self, value=""):
+#         self.nex = None  # 次がどのノードを指すか
+#         self.value = value  # ノードに付随している値
+
+# # 連結リストの初期化
+# nil = Node()
+# nil.nex = nil
+
+# # 連結リストへ先頭への要素の挿入
+# def insert(v):
+#     v.nex = nil.nex  # v の次を、現在の先頭に
+#     nil.nex = v  # 先頭を v に書き換える
+
+# # 先頭の要素を削除
+# def erase():
+#     if nil.nex == nil:
+#         print("Error")
+#     else:
+#         nil.nex = nil.nex.nex
+#         pass
 
 
 # 最大公約数
@@ -35,25 +57,26 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
+# from collections import defaultdict,Counter
+# tmp = defaultdict(int)
+# 両端キュー
+# from collections import deque
+# 優先度付きキュー
+# from heapq import heapify, heappush, heappop
+import itertools
+
 N = int(input())
+towns = [list(map(int, input().split())) for _ in range(N)]
+# print(towns)
 
-XY = [list(map(int, input().split())) for _ in range(N)]
+ans = []
+for seq in itertools.permutations(range(1, N + 1)):
+    # print(list(seq))
+    dist = 0
+    for i in range(N - 1):
+        x1, y1 = towns[seq[i] - 1]
+        x2, y2 = towns[seq[i + 1] - 1]
+        dist += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    ans.append(dist)
 
-distanses = 0
-for seq in itertools.permutations(range(N)):
-    # print(seq)
-    for i, v in enumerate(seq):
-        # print(i, v)
-        if i == len(seq) - 1:
-            break
-
-        x = (XY[v][0] - XY[seq[i + 1]][0]) ** 2
-        y = (XY[v][1] - XY[seq[i + 1]][1]) ** 2
-        # print("xとy:", x + y)
-        distanses += math.sqrt(x + y)
-        # print("distanses, x, y", distanses, x, y)
-
-n = 1
-for i in range(1, N + 1):
-    n *= i
-print(distanses / n)
+print(sum(ans) / len(ans))

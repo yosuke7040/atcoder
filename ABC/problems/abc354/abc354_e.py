@@ -3,7 +3,6 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -65,34 +64,7 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
-S = list(input())
+N = int(input())
+cards = [list(map(int, input().split())) for _ in range(N)]
 
-o = []
-x = []
-
-for i in range(10):
-    if S[i] == "o":
-        o.append(i)
-    elif S[i] == "x":
-        x.append(i)
-
-ans = 0
-
-for i in range(10000):
-    s = str(i).zfill(4)
-
-    is_ok = True
-    for maru in o:
-        if str(maru) not in s:
-            is_ok = False
-            break
-
-    for batsu in x:
-        if str(batsu) in s:
-            is_ok = False
-            break
-
-    if is_ok:
-        ans += 1
-
-print(ans)
+print(cards)

@@ -3,7 +3,6 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -65,34 +64,46 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
-S = list(input())
+# 解説を見て実装（振り返りDがわかりやすい）
+# https://www.youtube.com/watch?v=AHn4XUIvtwg
 
-o = []
-x = []
+A, B, C, D = map(int, input().split())
+# マイナスを考えないようにするために平行移動させる
+A += 10**9
+B += 10**9
+C += 10**9
+D += 10**9
 
-for i in range(10):
-    if S[i] == "o":
-        o.append(i)
-    elif S[i] == "x":
-        x.append(i)
 
-ans = 0
+# (0,0) -> (4,2)が1つのフォーマットになっている
+# 面積の2倍を回答としているから、8がベース
+def solve(W, H):
+    ret = 0
+    ret += 8 * (H // 2) * (W // 4)
 
-for i in range(10000):
-    s = str(i).zfill(4)
+    if H % 2 != 0:
+        ret += 4 * (W // 4)
 
-    is_ok = True
-    for maru in o:
-        if str(maru) not in s:
-            is_ok = False
-            break
+    if W % 4 >= 1:
+        ret += 3 * (H // 2)
+    if W % 4 >= 2:
+        ret += 3 * (H // 2)
+    if W % 4 >= 3:
+        ret += 1 * (H // 2)
 
-    for batsu in x:
-        if str(batsu) in s:
-            is_ok = False
-            break
+    H %= 2
+    W %= 4
+    if H != 0:
+        if W >= 1:
+            ret += 2
+        if W >= 2:
+            ret += 1
 
-    if is_ok:
-        ans += 1
+    return ret
 
-print(ans)
+
+# print(solve(A, B))
+# print(solve(A, D))
+# print(solve(C, B))
+# print(solve(C, D))
+print(solve(A, B) - solve(A, D) - solve(C, B) + solve(C, D))

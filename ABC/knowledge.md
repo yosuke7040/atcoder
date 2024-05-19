@@ -19,6 +19,23 @@ python でインクリメント使えないじゃん
 
 - 順列・組み合わせ(<https://cocoinit23.com/python-itertools/>)
 
+### 141 D
+
+- 優先度付きキュー
+
+heappopは最小値の取り出し。最大値の取り出しは、ひと手間必要(<https://qiita.com/ell/items/fe52a9eb9499b7060ed6>)
+
+```python
+import heapq
+a = [1, 6, 8, 0, -1]
+a = list(map(lambda x: x*(-1), a))  # 各要素を-1倍
+print(a)
+
+heapq.heapify(a)
+print(heapq.heappop(a)*(-1))  # 最大値の取り出し
+print(a)
+```
+
 ### 149 C
 
 - 素数の計算
@@ -107,6 +124,18 @@ math.ceil(N)
 ### 199 C
 
 - 文字列の並び替えは一見O(1)でできそうだが実際には文字列の長さをNとしてO(N)かかる
+
+### 201 C
+
+- 文字列・数値をゼロ埋め（ゼロパディング）
+- 右寄せゼロ埋め: zfill()
+- 右寄せ、中央寄せ、左寄せ: rjust(), center(), ljust()
+
+```python
+s = '1234'
+print(s.zfill(8))
+# 00001234
+```
 
 ### 237 D
 
