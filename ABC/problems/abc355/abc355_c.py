@@ -59,12 +59,65 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-
 # 両端キュー
 # from collections import deque
-
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
-# ソート状態で要素の追加・削除が可能なリスト。O(logN)
-# from sortedcontainers import SortedSet, SortedList, SortedDict
+N, T = map(int, input().split())
+A = list(map(int, input().split()))
+
+hit_rows_cnt = [[] for _ in range(N)]
+hit_columns_cnt = [[] for _ in range(N)]
+miginaname_cnt = []
+# miginaname_cnt = [[] for _ in range(N)]
+hidarinaname_cnt = []
+# hidarinaname_cnt = [[] for _ in range(N)]
+
+# hit_rows_cnt = 0
+# hit_columns_cnt = 0
+# miginaname_cnt = 0
+# hidarinaname_cnt = 0
+cnt = 0
+for turn in A:
+    cnt += 1
+    # print("--------------------")
+    # print("turn", turn)
+    row_idx = turn // N
+    if turn % N == 0:
+        row_idx -= 1
+
+    column_idx = (turn % N) - 1
+    if column_idx == -1:
+        column_idx = N - 1
+
+    # print("row_idx", row_idx)
+    # print("column_idx", column_idx)
+
+    hit_rows_cnt[row_idx].append(turn)
+    hit_columns_cnt[column_idx].append(turn)
+
+    if row_idx == column_idx:
+        miginaname_cnt.append(turn)
+    if row_idx + column_idx == N - 1:
+        hidarinaname_cnt.append(turn)
+
+    # print("hit_rows_cnt", hit_rows_cnt)
+    # print("hit_columns_cnt", hit_columns_cnt)
+    # print("miginaname_cnt", miginaname_cnt)
+    # print("hidarinaname_cnt", hidarinaname_cnt)
+
+    if len(hit_rows_cnt[row_idx]) == N:
+        print(cnt)
+        exit()
+    if len(hit_columns_cnt[column_idx]) == N:
+        print(cnt)
+        exit()
+    if len(miginaname_cnt) == N:
+        print(cnt)
+        exit()
+    if len(hidarinaname_cnt) == N:
+        print(cnt)
+        exit()
+
+print(-1)

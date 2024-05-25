@@ -9,4 +9,5 @@ if [ ! -e ${test_dir} ]; then
     oj dl -d ${test_dir} https://atcoder.jp/contests/${base_url}/tasks/${problem_name//-/_}
 fi
 
-oj test -c "python3 problems/${base_url}/${problem_name}.py" -d ${test_dir}
+# oj test -c "python3 problems/${base_url}/${problem_name}.py" -d ${test_dir}
+oj test -c "pypy problems/${base_url}/${problem_name}.py" -d ${test_dir}

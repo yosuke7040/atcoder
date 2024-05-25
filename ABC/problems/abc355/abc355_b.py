@@ -59,12 +59,24 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
-
 # 両端キュー
 # from collections import deque
-
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
-# ソート状態で要素の追加・削除が可能なリスト。O(logN)
-# from sortedcontainers import SortedSet, SortedList, SortedDict
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+C = A + B
+C.sort()
+A.sort()
+# print(C)
+# print(A)
+
+for i in range(len(C)):
+    for j in range(len(A) - 1):
+        if C[i] == A[j] and C[i + 1] == A[j + 1]:
+            print("Yes")
+            exit()
+print("No")
