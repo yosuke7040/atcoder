@@ -41,6 +41,18 @@ print(a)
 - 素数の計算
   素数判定のアルゴリズム（<https://algo-method.com/descriptions/93>）
   Nの平方根までの計算で良い
+  ```python
+  # 素数を判定する関数
+  def isprime(N):
+      if N < 2:
+          return False
+      i = 2
+      while i * i <= N:
+          if N % i == 0:
+              return False
+          i += 1
+      return True
+  ```
 
 ### 154 D
 

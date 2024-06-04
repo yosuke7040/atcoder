@@ -59,31 +59,39 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
+
 # 両端キュー
+# from collections import deque
 
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
+# ソート状態で要素の追加・削除が可能なリスト。O(logN)
+# from sortedcontainers import SortedSet, SortedList, SortedDict
+MOD = 998244353
 
-from sortedcontainers import SortedList
 
-N = int(input())
+def popcount(x):
+    return bin(x).count("1")
 
-LR = sorted(list(tuple(map(int, input().split())) for _ in range(N)))
-ans = 0
-S = SortedList()
 
-for l, r in LR[::-1]:
-    # Sにrを挿入する位置(index)を返す
-    ans += S.bisect_right(r)
-    S.add(l)
-print(ans)
+def solve(N, M):
+    result = 0
 
-print("---------------")
-test_S = SortedList()
-test_S.add(1)
-test_S.add(2)
-test_S.add(3)
-print(test_S)
-print(test_S.bisect_right(2))
-print(test_S)
+    if N == 0 or M == 0:
+        return 0
+
+    for i in range(61):  # 2^60 < 2^61
+        if (M >> i) & 1:
+            result += (N >> (i + 1)) * (i + 1) * (1 << i)
+            if N & ((1 << (i + 1)) - 1) >= (1 << i):
+                result += (N & ((1 << (i + 1)) - 1)) - (1 << i) + 1
+
+    return result % MOD
+
+
+# 入力の読み取り
+N, M = map(int, input().split())
+
+# 結果の出力
+print(solve(N, M))

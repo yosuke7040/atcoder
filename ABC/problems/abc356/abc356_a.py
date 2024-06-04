@@ -3,6 +3,7 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
+
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -59,31 +60,21 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
+
 # 両端キュー
+# from collections import deque
 
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
+# ソート状態で要素の追加・削除が可能なリスト。O(logN)
+# from sortedcontainers import SortedSet, SortedList, SortedDict
 
-from sortedcontainers import SortedList
+N, L, R = map(int, input().split())
 
-N = int(input())
+A = []
+for i in range(N):
+    A.append(i + 1)
 
-LR = sorted(list(tuple(map(int, input().split())) for _ in range(N)))
-ans = 0
-S = SortedList()
-
-for l, r in LR[::-1]:
-    # Sにrを挿入する位置(index)を返す
-    ans += S.bisect_right(r)
-    S.add(l)
-print(ans)
-
-print("---------------")
-test_S = SortedList()
-test_S.add(1)
-test_S.add(2)
-test_S.add(3)
-print(test_S)
-print(test_S.bisect_right(2))
-print(test_S)
+A = A[: L - 1] + A[L - 1 : R][::-1] + A[R:]
+print(*A)

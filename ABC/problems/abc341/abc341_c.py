@@ -38,27 +38,32 @@ T = input()
 S = list(input() for _ in range(H))
 
 ans = 0
+is_valid = True
+
 for i in range(1, H - 1):
     for j in range(1, W - 1):
+        is_valid = True
         if S[i][j] == "#":
             continue
 
         pos = [i, j]
-        valid = True
-        for k in T:
-            if k == "R":
-                pos[1] += 1
-            elif k == "L":
+
+        for k in range(N):
+            if T[k] == "L":
                 pos[1] -= 1
-            elif k == "U":
+            elif T[k] == "R":
+                pos[1] += 1
+            elif T[k] == "U":
                 pos[0] -= 1
-            elif k == "D":
+            elif T[k] == "D":
                 pos[0] += 1
 
             if S[pos[0]][pos[1]] == "#":
-                valid = False
+                is_valid = False
                 break
 
-        if valid:
+        if is_valid:
+            # print("-----valid pos :", pos)
             ans += 1
+
 print(ans)

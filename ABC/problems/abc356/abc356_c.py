@@ -59,31 +59,43 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
+
 # 両端キュー
+# from collections import deque
 
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
+# ソート状態で要素の追加・削除が可能なリスト。O(logN)
+# from sortedcontainers import SortedSet, SortedList, SortedDict
 
-from sortedcontainers import SortedList
+N, M, K = map(int, input().split())
+tests = []
+for _ in range(M):
+    *test_keys, result = input().split()
+    Ci = int(test_keys[0])
+    keys = list(map(int, test_keys[1:]))
+    tests.append((Ci, keys, result))
 
-N = int(input())
+total_combinations = 1 << N
+valid_count = 0
 
-LR = sorted(list(tuple(map(int, input().split())) for _ in range(N)))
-ans = 0
-S = SortedList()
+for i in range(total_combinations):
+    valid = True
+    for test in tests:
+        Ci, keys, result = test
+        correct_keys_count = 0
 
-for l, r in LR[::-1]:
-    # Sにrを挿入する位置(index)を返す
-    ans += S.bisect_right(r)
-    S.add(l)
-print(ans)
+        for key in keys:
+            if (i & (1 << (key - 1))) != 0:
+                correct_keys_count += 1
 
-print("---------------")
-test_S = SortedList()
-test_S.add(1)
-test_S.add(2)
-test_S.add(3)
-print(test_S)
-print(test_S.bisect_right(2))
-print(test_S)
+        if (result == "o" and correct_keys_count < K) or (
+            result == "x" and correct_keys_count >= K
+        ):
+            valid = False
+            break
+    if valid:
+        valid_count += 1
+
+print(valid_count)

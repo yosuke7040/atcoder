@@ -57,6 +57,18 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     return slope1 == slope2
 
 
+# 素数判定
+def isprime(N):
+    if N < 2:
+        return False
+    i = 2
+    while i * i <= N:
+        if N % i == 0:
+            return False
+        i += 1
+    return True
+
+
 # from collections import defaultdict,Counter
 # tmp = defaultdict(int)
 

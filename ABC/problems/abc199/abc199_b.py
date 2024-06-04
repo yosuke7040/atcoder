@@ -31,3 +31,21 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
     slope2 = (y3 - y1) * (x2 - x1)
 
     return slope1 == slope2
+
+
+ans = set()
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+# for i in range(N):
+#     a, b = A[i], B[i]
+#     for j in range(a, b + 1):
+#         ans.add(j)
+
+tmp = min(B) - max(A)
+if tmp < 0:
+    print(0)
+else:
+    print(tmp + 1)
