@@ -3,6 +3,10 @@ import sys
 sys.setrecursionlimit(10**6)
 INF = 1 << 60
 
+# 大文字アルファベット
+upper_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# 小文字アルファベット
+lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
 # # 連結リストの各ノード
 # class Node:
