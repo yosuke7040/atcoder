@@ -8,9 +8,6 @@ upper_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # 小文字アルファベット
 lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
-MOD = 998244353
-
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -88,3 +85,18 @@ def isprime(N):
 
 # ソート状態で要素の追加・削除が可能なリスト。O(logN)
 # from sortedcontainers import SortedSet, SortedList, SortedDict
+
+N, M = map(int, input().split())
+H = list(map(int, input().split()))
+
+ans = 0
+for i in range(N):
+    M -= H[i]
+
+    if M < 0:
+        print(ans)
+        exit()
+
+    ans += 1
+
+print(ans)

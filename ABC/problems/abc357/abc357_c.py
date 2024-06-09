@@ -8,9 +8,6 @@ upper_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # 小文字アルファベット
 lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
-MOD = 998244353
-
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -88,3 +85,29 @@ def isprime(N):
 
 # ソート状態で要素の追加・削除が可能なリスト。O(logN)
 # from sortedcontainers import SortedSet, SortedList, SortedDict
+
+
+def generate_carpet(N):
+    if N == 0:
+        return ["#"]
+
+    smaller_carpet = generate_carpet(N - 1)
+    size = len(smaller_carpet)
+    new_size = size * 3
+    carpet = [["."] * new_size for _ in range(new_size)]
+
+    for i in range(3):
+        for j in range(3):
+            if i == 1 and j == 1:
+                continue
+            for x in range(size):
+                for y in range(size):
+                    carpet[i * size + x][j * size + y] = smaller_carpet[x][y]
+
+    return carpet
+
+
+N = int(input())
+carpet = generate_carpet(N)
+for row in carpet:
+    print("".join(row))

@@ -10,7 +10,6 @@ lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
 MOD = 998244353
 
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -88,3 +87,30 @@ def isprime(N):
 
 # ソート状態で要素の追加・削除が可能なリスト。O(logN)
 # from sortedcontainers import SortedSet, SortedList, SortedDict
+
+# N = int(input())
+
+# ten_pow_N_mod = pow(10, N, MOD)
+
+# # Calculate the geometric series sum part
+# if ten_pow_N_mod == 0:
+#     geom_sum_mod = (MOD - 1) * pow(9, MOD - 2, MOD) % MOD
+# else:
+#     geom_sum_mod = (ten_pow_N_mod - 1) * pow(9, MOD - 2, MOD) % MOD
+
+# # Calculate V_N % MOD
+# VN_mod = N * geom_sum_mod % MOD
+# print(VN_mod)
+
+N = int(input())
+
+keta = len(str(N))
+r = pow(10, keta, MOD)
+rNK = pow(r, N, MOD)
+bunnsi = (rNK - 1) % MOD
+
+bunbo = (r - 1) % MOD
+inverse_bunbo = pow(bunbo, MOD - 2, MOD)
+
+res = (bunnsi * inverse_bunbo % MOD) * (N % MOD) % MOD
+print(res)

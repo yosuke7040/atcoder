@@ -8,6 +8,8 @@ upper_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # 小文字アルファベット
 lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
+MOD = 998244353
+
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):

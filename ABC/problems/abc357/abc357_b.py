@@ -8,9 +8,6 @@ upper_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # 小文字アルファベット
 lower_alpha = "abcdefghijklmnopqrstuvwxyz"
 
-MOD = 998244353
-
-
 # # 連結リストの各ノード
 # class Node:
 #     def __init__(self, value=""):
@@ -86,5 +83,21 @@ def isprime(N):
 # 優先度付きキュー
 # from heapq import heapify, heappush, heappop
 
-# ソート状態で要素の追加・削除が可能なリスト。O(logN)
+# ソート状態で要素の追加・削除が可能なリスト。
 # from sortedcontainers import SortedSet, SortedList, SortedDict
+
+S = input()
+
+upper_cnt = 0
+lower_cnt = 0
+
+for i in range(len(S)):
+    if S[i] in upper_alpha:
+        upper_cnt += 1
+    else:
+        lower_cnt += 1
+
+if upper_cnt > lower_cnt:
+    print(S.upper())
+else:
+    print(S.lower())
