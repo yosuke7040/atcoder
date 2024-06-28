@@ -68,3 +68,16 @@ def are_points_collinear(x1, y1, x2, y2, x3, y3):
 
 # ソート状態で要素の追加・削除が可能なリスト。O(logN)
 # from sortedcontainers import SortedSet, SortedList, SortedDict
+H, W, N = map(int, input().split())
+
+X, Y = [], []
+for i in range(N):
+    x, y = map(int, input().split())
+    X.append(x)
+    Y.append(y)
+
+Xdict = {x: i+1 for i, x in enumerate(sorted(list(set(X))))}
+Ydict = {y:i+1 for i,y in enumerate(sorted(list(set(Y))))}
+
+for i in range(N):
+  print(Xdict[X[i]], Ydict[Y[i]])
