@@ -25,8 +25,8 @@ input.txtにテストケースを記載
 環境zy
 
 ```bash
-python3 -m venv venv-atcoder
-source venv-atcoder/bin/activate
+python3 -m venv venv-compe
+source venv-compe/bin/activate
 
 # pypy
 curl -LO https://downloads.python.org/pypy/pypy3.10-v7.3.16-macos_arm64.tar.bz2
